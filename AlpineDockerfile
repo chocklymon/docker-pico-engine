@@ -1,0 +1,18 @@
+FROM node:6-alpine
+LABEL maintainer="Curtis Oakley"
+
+# Install pico-engine build dependencies
+RUN apk --no-cache add \
+    python \
+    alpine-sdk
+
+# Install pico-engine and krl-compiler
+WORKDIR /picos
+RUN npm install -g \
+        pico-engine \
+        krl-compiler
+
+EXPOSE 8080
+
+CMD pico-engine
+
